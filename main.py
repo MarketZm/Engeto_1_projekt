@@ -43,7 +43,6 @@ garpike and stingray are also present.
 
 
 def login():
-    """Zpracuje přihlášení uživatele a zkontroluje správnost údajů."""
     username = input("username: ")
     password = input("password: ")
 
@@ -58,7 +57,6 @@ def login():
 
 
 def select_text():
-    """Zpracuje výběr textu od uživatele."""
     try:
         selection = int(input(f"Enter a number btw. 1 and {len(TEXTS)} to select: "))
         if 1 <= selection <= len(TEXTS):
@@ -72,11 +70,9 @@ def select_text():
 
 
 def analyze_text(text):
-    """Analyzuje vybraný text a vypíše statistiky."""
     words = text.split()
     clean_words = [word.strip(".,:;!?") for word in words]
 
-    # Vypočítá statistiky
     word_count = len(clean_words)
     titlecase_count = sum(1 for word in clean_words if word.istitle())
     uppercase_count = sum(1 for word in clean_words if word.isupper())
@@ -93,7 +89,6 @@ def analyze_text(text):
     print(f"The sum of all the numbers {numeric_sum}")
     print("-" * 40)
 
-    # Vytvoří a vypíše sloupcový graf
     print("LEN|  OCCURRENCES  |NR.")
     print("-" * 40)
 
@@ -109,9 +104,7 @@ def analyze_text(text):
         bar = "*" * count
         print(f"{length:3}|{bar:<15}|{count}")
 
-
 def main():
-    """Hlavní funkce programu."""
     login()
     selected_text = select_text()
     analyze_text(selected_text)
